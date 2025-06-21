@@ -1,6 +1,6 @@
 <?php
 // Connexion MySQL via proxy localhost:3306
-$host = 'host.docker.internal';
+$host = '127.0.0.1';
 $port = 3306;
 $dbname = 'appdb';
 $user = 'root'; // on utilise root car IAM auth bypass la pass (proxy)
