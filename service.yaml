@@ -1,0 +1,29 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: mon-app-php
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/execution-environment: gen2
+    spec:
+      serviceAccountName: php-cloudrun@sbx-31371-dqfzq1turfz4qp9vcj9g.iam.gserviceaccount.com
+      containers:
+        - name: app
+          image: gcr.io/sbx-31371-dqfzq1turfz4qp9vcj9g/mon-app-php:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: 127.0.0.1
+            - name: DB_USER
+              value: root
+            - name: DB_NAME
+              value: appdb
+        - name: proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.33.0
+          args:
+            - "/cloud_sql_proxy"
+            - "-instances=[PROJECT_ID]:[REGION]:php-db=tcp:3306"
+            - "-auto-iam-authn"

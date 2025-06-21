@@ -14,6 +14,6 @@ try {
     ]);
     echo "Connexion à la base réussie !";
 } catch (PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+    echo "Erreur de connexion , tra chbiha :D : " . $e->getMessage();
 }
 ?>
