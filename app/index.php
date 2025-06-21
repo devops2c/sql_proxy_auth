@@ -1,6 +1,6 @@
 <?php
 // Connexion MySQL via proxy localhost:3306
-$host = '127.0.0.1';
+$host = 'host.docker.internal';
 $port = 3306;
 $dbname = 'appdb';
 $user = 'root'; // on utilise root car IAM auth bypass la pass (proxy)
@@ -12,7 +12,7 @@ try {
     $pdo = new PDO($dsn, $user, null, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
-    echo "Connexion à la base réussie !";
+    echo "Connexion à la base réussie !  weyyy";
 } catch (PDOException $e) {
     echo "Erreur de connexion , tra chbiha :D : " . $e->getMessage();
 }
