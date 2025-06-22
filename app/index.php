@@ -1,7 +1,7 @@
 <?php
 // Connexion MySQL via proxy localhost:3306
 $host = '127.0.0.1';
-$port = 3306;
+$port = 3307;
 $dbname = 'appdb';
 $user = 'root'; // on utilise root car IAM auth bypass la pass (proxy)
 $charset = 'utf8mb4';
